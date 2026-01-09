@@ -3,7 +3,7 @@
 #include "manager.h"
 #include "reslimit.h"
 #include "util.h"
-#include "luma.h"
+#include "wulfy.h"
 
 Manager g_manager;
 

@@ -89,7 +89,7 @@ void MiscellaneousMenu_SwitchBoot3dsxTargetTitle(void)
 {
     Result res;
     char failureReason[64];
-    u64 currentTid = Luma_SharedConfig->selected_hbldr_3dsx_tid;
+    u64 currentTid = Wulfy_SharedConfig->selected_hbldr_3dsx_tid;
     u64 newTid = currentTid;
 
     FS_ProgramInfo progInfo;
@@ -114,7 +114,7 @@ void MiscellaneousMenu_SwitchBoot3dsxTargetTitle(void)
         newTid = HBLDR_DEFAULT_3DSX_TID;
     }
 
-    Luma_SharedConfig->selected_hbldr_3dsx_tid = newTid;
+    Wulfy_SharedConfig->selected_hbldr_3dsx_tid = newTid;
 
     // Move "selected" field to "current" if no app is currently running.
     // Otherwise, PM will do it on app exit.
@@ -124,7 +124,7 @@ void MiscellaneousMenu_SwitchBoot3dsxTargetTitle(void)
     // at termination at all times, otherwise the process refcounts of sysmodules
     // get all messed up.
     if (!appRunning)
-        Luma_SharedConfig->hbldr_3dsx_tid = newTid;
+        Wulfy_SharedConfig->hbldr_3dsx_tid = newTid;
 
     if (compareTids(newTid, HBLDR_DEFAULT_3DSX_TID))
         miscellaneousMenu.items[0].title = "Switch the hb. title to the current app.";

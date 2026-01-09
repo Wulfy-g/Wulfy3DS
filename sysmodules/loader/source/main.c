@@ -72,9 +72,9 @@ static inline void loadCFWInfo(void)
     }
 
     hbldrTid = hbldrTid == 0 ? HBLDR_DEFAULT_3DSX_TID : hbldrTid;
-    Luma_SharedConfig->hbldr_3dsx_tid = hbldrTid;
-    Luma_SharedConfig->selected_hbldr_3dsx_tid = hbldrTid;
-    Luma_SharedConfig->use_hbldr = true;
+    Wulfy_SharedConfig->hbldr_3dsx_tid = hbldrTid;
+    Wulfy_SharedConfig->selected_hbldr_3dsx_tid = hbldrTid;
+    Wulfy_SharedConfig->use_hbldr = true;
 }
 
 void __ctru_exit(int rc) { (void)rc; } // needed to avoid linking error

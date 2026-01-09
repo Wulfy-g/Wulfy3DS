@@ -2,7 +2,7 @@ ifeq ($(BUILD_FOR_EXPLOIT_DEV),1)
 	# Keep Loader so that we can execute 3DSX
 	SUBFOLDERS := loader
 else
-	SUBFOLDERS := loader sm pm pxi rosalina
+	SUBFOLDERS := loader sm pm pxi wulfy
 endif
 
 CXIS := $(foreach dir, $(SUBFOLDERS), $(dir)/$(dir).cxi)

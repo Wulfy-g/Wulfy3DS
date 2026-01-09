@@ -27,7 +27,7 @@
 #include <3ds.h>
 #include "memory.h"
 #include "fmt.h"
-#include "luma_config.h"
+#include "wulfy_config.h"
 #include "screen_filters.h"
 #include "config_template_ini.h"
 #include "ifile.h"
@@ -43,7 +43,7 @@ typedef struct CfgData {
     s8 volumeSliderOverride;
 
     u64 hbldr3dsxTitleId;
-    u32 rosalinaMenuCombo;
+    u32 wulfyMenuCombo;
     u32 pluginLoaderFlags;
     s16 ntpTzOffetMinutes;
 
@@ -89,7 +89,7 @@ static size_t LumaConfig_SaveLumaIniConfigToStr(char *out, const CfgData *cfg)
 {
     char lumaVerStr[64];
     char lumaRevSuffixStr[16];
-    char rosalinaMenuComboStr[128];
+    char wulfyMenuComboStr[128];
 
     const char *splashPosStr;
     const char *n3dsCpuStr;
@@ -143,7 +143,7 @@ static size_t LumaConfig_SaveLumaIniConfigToStr(char *out, const CfgData *cfg)
         sprintf(lumaRevSuffixStr, "-%08lx", (u32)commitHash);
     }
 
-    LumaConfig_ConvertComboToString(rosalinaMenuComboStr, cfg->rosalinaMenuCombo);
+    LumaConfig_ConvertComboToString(wulfyMenuComboStr, cfg->wulfyMenuCombo);
 
     static const int pinOptionToDigits[] = { 0, 4, 6, 8 };
     int pinNumDigits = pinOptionToDigits[MULTICONFIG(PIN)];
@@ -176,7 +176,7 @@ static size_t LumaConfig_SaveLumaIniConfigToStr(char *out, const CfgData *cfg)
         pinNumDigits, n3dsCpuStr,
         autobootModeStr,
 
-        cfg->hbldr3dsxTitleId, rosalinaMenuComboStr, (int)(cfg->pluginLoaderFlags & 1),
+        cfg->hbldr3dsxTitleId, wulfyMenuComboStr, (int)(cfg->pluginLoaderFlags & 1),
         (int)cfg->ntpTzOffetMinutes,
 
         (int)cfg->topScreenFilter.cct, (int)cfg->bottomScreenFilter.cct,
@@ -249,8 +249,8 @@ Result LumaConfig_SaveSettings(void)
     configData.bootConfig = bootConfig;
     configData.splashDurationMsec = splashDurationMsec;
     configData.volumeSliderOverride = currVolumeSliderOverride;
-    configData.hbldr3dsxTitleId = Luma_SharedConfig->selected_hbldr_3dsx_tid;
-    configData.rosalinaMenuCombo = menuCombo;
+    configData.hbldr3dsxTitleId = Wulfy_SharedConfig->selected_hbldr_3dsx_tid;
+    configData.wulfyMenuCombo = menuCombo;
     configData.pluginLoaderFlags = PluginLoader__IsEnabled();
     configData.ntpTzOffetMinutes = (s16)lastNtpTzOffset;
     configData.topScreenFilter = topScreenFilter;

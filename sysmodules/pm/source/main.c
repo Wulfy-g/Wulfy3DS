@@ -13,7 +13,7 @@
 #include "util.h"
 #include "my_thread.h"
 #include "service_manager.h"
-#include "luma.h"
+#include "wulfy.h"
 
 static MyThread processMonitorThread, taskRunnerThread;
 static u8 CTR_ALIGN(8) processDataBuffer[0x40 * sizeof(ProcessData)] = {0};

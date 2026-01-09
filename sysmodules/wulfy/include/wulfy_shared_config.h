@@ -18,12 +18,12 @@
 
 #include <3ds/types.h>
 
-/// Luma shared config type (private!).
-typedef struct LumaSharedConfig {
+/// Wulfy shared config type (private!).
+typedef struct WulfySharedConfig {
     u64 hbldr_3dsx_tid;             ///< Title ID to use for 3DSX loading (current).
     u64 selected_hbldr_3dsx_tid;    ///< Title ID to use for 3DSX loading (to be moved to "current" when the current app closes).
     bool use_hbldr;                 ///< Whether or not Loader should use hb:ldr (reset to true).
-} LumaSharedConfig;
+} WulfySharedConfig;
 
-/// Luma shared config.
-#define Luma_SharedConfig ((volatile LumaSharedConfig *)(OS_SHAREDCFG_VADDR + 0x800))
+/// Wulfy shared config.
+#define Wulfy_SharedConfig ((volatile WulfySharedConfig *)(OS_SHAREDCFG_VADDR + 0x800))

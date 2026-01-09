@@ -59,7 +59,7 @@ void __ctru_exit(int rc) { (void)rc; } // needed to avoid linking error
 void __wrap_exit(int rc)
 {
     (void)rc;
-    // TODO: make pm terminate rosalina
+    // TODO: make pm terminate wulfy
     __libc_fini_array();
 
     // Kernel will take care of it all
@@ -106,7 +106,7 @@ void initSystem(void)
     if (R_FAILED(FSUSER_SetPriority(-16)))
         svcBreak(USERBREAK_PANIC);
 
-    miscellaneousMenu.items[0].title = Luma_SharedConfig->selected_hbldr_3dsx_tid == HBLDR_DEFAULT_3DSX_TID ?
+    miscellaneousMenu.items[0].title = Wulfy_SharedConfig->selected_hbldr_3dsx_tid == HBLDR_DEFAULT_3DSX_TID ?
         "Switch the hb. title to the current app." :
         "Switch the hb. title to " HBLDR_DEFAULT_3DSX_TITLE_NAME;
 
@@ -115,14 +115,14 @@ void initSystem(void)
 
     __libc_init_array();
 
-    // ROSALINA HACKJOB END
+    // WULFY HACKJOB END
 
-    // Rosalina specific:
+    // Wulfy specific:
     u32 *tls = (u32 *)getThreadLocalStorage();
     memset(tls, 0, 0x80);
     tls[0] = 0x21545624;
 
-    // ROSALINA HACKJOB BEGIN
+    // WULFY HACKJOB BEGIN
     // NORMAL APPS SHOULD NOT DO THIS, EVER
     srvSetBlockingPolicy(true); // GetServiceHandle nonblocking if service port is full
 }
@@ -218,7 +218,7 @@ static void handlePreTermNotification(u32 notificationId)
 static void handleNextApplicationDebuggedByForce(u32 notificationId)
 {
     (void)notificationId;
-    // Following call needs to be async because pm -> Loader depends on rosalina hb:ldr, handled in this very thread.
+    // Following call needs to be async because pm -> Loader depends on wulfy hb:ldr, handled in this very thread.
     TaskRunner_RunTask(debuggerFetchAndSetNextApplicationDebugHandleTask, NULL, 0);
 }
 

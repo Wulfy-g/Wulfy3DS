@@ -28,7 +28,7 @@
 #include "shell.h"
 #include "utils.h"
 #include "screen_filters.h"
-#include "luma_config.h"
+#include "wulfy_config.h"
 
 static void forceAudioOutput(u32 forceOp)
 {

@@ -32,7 +32,7 @@
 #include "ifile.h"
 #include "menus.h"
 #include "utils.h"
-#include "luma_config.h"
+#include "wulfy_config.h"
 #include "menus/n3ds.h"
 #include "menus/cheats.h"
 #include "minisoc.h"
@@ -40,7 +40,7 @@
 #include "menus/screen_filters.h"
 #include "shell.h"
 
-//#define ROSALINA_MENU_SELF_SCREENSHOT 1 // uncomment this to enable the feature
+//#define WULFY_MENU_SELF_SCREENSHOT 1 // uncomment this to enable the feature
 
 u32 menuCombo = 0;
 bool isHidInitialized = false;
@@ -71,7 +71,7 @@ void scanInputHook(void)
 {
     hidScanInput();
 
-#ifdef ROSALINA_MENU_SELF_SCREENSHOT
+#ifdef WULFY_MENU_SELF_SCREENSHOT
     // Ugly hack but should work. For self-documentation w/o capture card purposes only.
     u32 selfScreenshotCombo = KEY_L | KEY_DUP | KEY_SELECT;
     if ((hidKeysHeld() & selfScreenshotCombo) == selfScreenshotCombo && (hidKeysDown() & selfScreenshotCombo) != 0)
@@ -383,7 +383,7 @@ void menuThreadMain(void)
             menuEnter();
             if(isN3DS) N3DSMenu_UpdateStatus();
             PluginLoader__UpdateMenu();
-            menuShow(&rosalinaMenu);
+            menuShow(&wulfyMenu);
             menuLeave();
         }
 
@@ -570,7 +570,7 @@ void menuShow(Menu *root)
         }
         else if(pressed & KEY_B)
         {
-            while (nbPreviousMenus == 0 && (scanHeldKeys() & KEY_B)); // wait a bit before exiting rosalina
+            while (nbPreviousMenus == 0 && (scanHeldKeys() & KEY_B)); // wait a bit before exiting wulfy
 
             Draw_Lock();
             Draw_ClearFramebuffer();

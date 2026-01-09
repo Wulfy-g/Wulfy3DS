@@ -1,6 +1,6 @@
 #include <3ds.h>
 #include <string.h>
-#include "luma.h"
+#include "wulfy.h"
 #include "util.h"
 
 u32 config, multiConfig, bootConfig;

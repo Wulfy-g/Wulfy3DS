@@ -30,7 +30,7 @@
 #include <3ds/types.h>
 #include "menu.h"
 
-extern Menu rosalinaMenu;
+extern Menu wulfyMenu;
 
 void RosalinaMenu_TakeScreenshot(void);
 void RosalinaMenu_ShowCredits(void);
@@ -43,7 +43,7 @@ void RosalinaMenu_PowerOffOrReboot(void);
 
 void RosalinaMenu_ShowSystemInfo();
 
-bool rosalinaMenuShouldShowDebugInfo(void);
+bool wulfyMenuShouldShowDebugInfo(void);
 void RosalinaMenu_ShowDebugInfo(void);
 
 void menuTakeSelfScreenshot(void);

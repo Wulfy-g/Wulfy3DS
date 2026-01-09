@@ -40,10 +40,10 @@
 #include "memory.h"
 #include "fmt.h"
 #include "process_patches.h"
-#include "luma_config.h"
+#include "wulfy_config.h"
 
-Menu rosalinaMenu = {
-    "Rosalina menu",
+Menu wulfyMenu = {
+    "Wulfy menu",
     {
         { "Take screenshot", METHOD, .method = &RosalinaMenu_TakeScreenshot },
         { "Screen filters...", MENU, .menu = &screenFiltersMenu },
@@ -59,12 +59,12 @@ Menu rosalinaMenu = {
         { "Power off / reboot", METHOD, .method = &RosalinaMenu_PowerOffOrReboot },
         { "System info", METHOD, .method = &RosalinaMenu_ShowSystemInfo },
         { "Credits", METHOD, .method = &RosalinaMenu_ShowCredits },
-        { "Debug info", METHOD, .method = &RosalinaMenu_ShowDebugInfo, .visibility = &rosalinaMenuShouldShowDebugInfo },
+        { "Debug info", METHOD, .method = &RosalinaMenu_ShowDebugInfo, .visibility = &wulfyMenuShouldShowDebugInfo },
         {},
     }
 };
 
-bool rosalinaMenuShouldShowDebugInfo(void)
+bool wulfyMenuShouldShowDebugInfo(void)
 {
     // Don't show on release builds
 
